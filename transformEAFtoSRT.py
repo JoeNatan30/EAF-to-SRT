@@ -11,9 +11,9 @@ from collections import Counter
 #from os.path import isfile, join, exists
 
 parser = argparse.ArgumentParser(description='The Embedded Topic Model')
-parser.add_argument('--srtPath', type=str, default='./VideosGlosados156/', help='Path where per-line files are located')
+parser.add_argument('--srtPath', type=str, default='EAF_input/', help='Path where per-line files are located')
 parser.add_argument('--inputName', type=str, default='', help='Input File Name')
-parser.add_argument('--outputPath', type=str, default='./VideosGlosados156/SRT/', help='Path where per-line files are located')
+parser.add_argument('--outputPath', type=str, default='SRT_output/', help='Path where per-line files are located')
 
 args = parser.parse_args()
 
@@ -72,7 +72,9 @@ for eafFile in listFile:
         srtFile.append(newLine)
         newIndex +=1
 
-    srtFile.save(outputPath+eafFile[:-4]+'.srt', encoding='utf-8')
+    srtSave = outputPath+eafFile[:-4]+'.srt'
+    print("path:",srtSave)
+    srtFile.save(srtSave, encoding='utf-8')
 
 print(len(vocab))
 
